@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Plain",
+  "scopeName": "source.plain",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#builtins" },
+    { "include": "#functions" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.number-sign.plain", "match": "#.*$" }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.plain",
+          "begin": "\\\"",
+          "end": "\\\"",
+          "patterns": [
+            { "name": "constant.character.escape.plain", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.plain", "match": "\\b\\d+(?:\\.\\d+)?\\b" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.plain",
+          "match": "(?i:\\b(?:LET|SET|AS|GIVES|TO|END|IF|THEN|ELSE|REPEAT|FROM|WHILE|FOR|EACH|IN|BREAK|CONTINUE|GIVE|BACK|SAY|ASK|AND|OR|NOT|CLASS|EXTENDS|NEW|TRY|CATCH|FAIL|USE|EXTERN|FUNCTION)\\b)"
+        },
+        {
+          "name": "constant.language.plain",
+          "match": "(?i:\\b(?:TRUE|FALSE)\\b)"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        { "name": "storage.type.plain", "match": "(?i:\\b(?:int|float|bool|string|dict|any)\\b)" }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.plain",
+          "match": "\\b(?:ABS|SQRT|POW|FLOOR|CEIL|SIN|COS|MOD|CONTAINS|STARTS_WITH|ENDS_WITH|JOIN|RANGE|APPEND|REMOVE|LENGTH|UPPER|LOWER|SPLIT|READ_FILE|READ_LINES|WRITE_FILE|ENV|NOW_MS)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        { "name": "entity.name.function.plain", "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()" }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        { "name": "keyword.operator.plain", "match": "(?:<=|>=|!=|=|<|>|\\+|-|\\*|/|%|(?i:\\b(?:AND|OR|NOT)\\b))" }
+      ]
+    }
+  }
+}

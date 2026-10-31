@@ -1,0 +1,8 @@
+{
+  "Plain attribution header": { "prefix": "header", "body": ["# Plain Language created by MR-CODESPIKE", "$0"], "description": "Add the required creator attribution" },
+  "Function": { "prefix": "to", "body": ["TO ${1:name}(${2:arg} AS ${3:int}) GIVES ${4:int}", "    $0", "END TO"], "description": "Define a Plain function" },
+  "If block": { "prefix": "if", "body": ["IF ${1:condition} THEN", "    $0", "ELSE", "    ", "END IF"], "description": "Create an IF/ELSE block" },
+  "Counted repeat": { "prefix": "repeat", "body": ["REPEAT ${1:i} FROM ${2:0} TO ${3:10}", "    $0", "END REPEAT"], "description": "Create a counted loop" },
+  "Try catch": { "prefix": "try", "body": ["TRY", "    $0", "CATCH ${1:error}", "    SAY ${1:error}", "END TRY"], "description": "Create error handling" },
+  "Class": { "prefix": "class", "body": ["CLASS ${1:Name}${2: EXTENDS ${3:Base}}", "    LET ${4:field} AS ${5:string}", "", "    TO ${6:method}()", "        $0", "    END TO", "END CLASS"], "description": "Define a Plain class" }
+}

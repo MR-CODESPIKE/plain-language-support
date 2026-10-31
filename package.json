@@ -1,0 +1,62 @@
+{
+  "name": "plain-language-support",
+  "displayName": "Plain Language Support",
+  "description": "Case-insensitive Plain syntax highlighting, language configuration, and starter snippets.",
+  "version": "0.1.1",
+  "publisher": "mr-codespike",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "plain",
+    "programming-language",
+    "llvm",
+    "rust"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "plain",
+        "aliases": [
+          "Plain",
+          "plain"
+        ],
+        "extensions": [
+          ".pl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "plain",
+        "scopeName": "source.plain",
+        "path": "./syntaxes/plain.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "plain",
+        "path": "./snippets/plain.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "4.1.0"
+  },
+  "overrides": {
+    "minimatch": "11.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MR-CODESPIKE/plain-language-support.git"
+  }
+}
