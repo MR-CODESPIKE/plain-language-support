@@ -3,19 +3,44 @@
   "name": "Plain",
   "scopeName": "source.plain",
   "patterns": [
-    { "include": "#comments" },
-    { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#keywords" },
-    { "include": "#types" },
-    { "include": "#builtins" },
-    { "include": "#functions" },
-    { "include": "#operators" }
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#selfAndSuper"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#builtins"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#operators"
+    }
   ],
   "repository": {
     "comments": {
       "patterns": [
-        { "name": "comment.line.number-sign.plain", "match": "#.*$" }
+        {
+          "name": "comment.line.number-sign.plain",
+          "match": "#.*$"
+        }
       ]
     },
     "strings": {
@@ -25,21 +50,27 @@
           "begin": "\\\"",
           "end": "\\\"",
           "patterns": [
-            { "name": "constant.character.escape.plain", "match": "\\\\." }
+            {
+              "name": "constant.character.escape.plain",
+              "match": "\\\\."
+            }
           ]
         }
       ]
     },
     "numbers": {
       "patterns": [
-        { "name": "constant.numeric.plain", "match": "\\b\\d+(?:\\.\\d+)?\\b" }
+        {
+          "name": "constant.numeric.plain",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        }
       ]
     },
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.plain",
-          "match": "(?i:\\b(?:LET|SET|AS|GIVES|TO|END|IF|THEN|ELSE|REPEAT|FROM|WHILE|FOR|EACH|IN|BREAK|CONTINUE|GIVE|BACK|SAY|ASK|AND|OR|NOT|CLASS|EXTENDS|NEW|TRY|CATCH|FAIL|USE|EXTERN|FUNCTION)\\b)"
+          "match": "(?i:\\b(?:LET|SET|AS|GIVES|TO|END|IF|THEN|ELSE|REPEAT|FROM|WHILE|FOR|EACH|IN|BREAK|CONTINUE|GIVE|BACK|SAY|ASK|AND|OR|NOT|CLASS|EXTENDS|NEW|IS|TRY|CATCH|FAIL|USE|EXTERN|FUNCTION)\\b)"
         },
         {
           "name": "constant.language.plain",
@@ -49,25 +80,68 @@
     },
     "types": {
       "patterns": [
-        { "name": "storage.type.plain", "match": "(?i:\\b(?:int|float|bool|string|dict|any)\\b)" }
+        {
+          "name": "storage.type.plain",
+          "match": "(?i:\\b(?:int|float|bool|string|dict|any)\\b)"
+        }
       ]
     },
     "builtins": {
       "patterns": [
         {
           "name": "support.function.builtin.plain",
-          "match": "\\b(?:ABS|SQRT|POW|FLOOR|CEIL|SIN|COS|MOD|CONTAINS|STARTS_WITH|ENDS_WITH|JOIN|RANGE|APPEND|REMOVE|LENGTH|UPPER|LOWER|SPLIT|READ_FILE|READ_LINES|WRITE_FILE|ENV|NOW_MS)\\b"
+          "match": "\\b(?:ERROR_MESSAGE|REPEAT_STRING|APPEND_FILE|FILE_EXISTS|JSON_DECODE|JSON_ENCODE|STARTS_WITH|DELETE_KEY|RANDOM_INT|READ_LINES|WRITE_FILE|ENDS_WITH|READ_FILE|SUBSTRING|TO_STRING|CONTAINS|INDEX_OF|IS_ERROR|LIST_MAX|LIST_MIN|TO_FLOAT|HAS_KEY|REPLACE|REVERSE|TYPE_OF|APPEND|CONCAT|LENGTH|NOW_MS|RANDOM|REMOVE|TO_INT|UNIQUE|VALUES|CLAMP|FLOOR|LOWER|RANGE|ROUND|SLEEP|SLICE|SPLIT|UPPER|ARGS|CEIL|COPY|EXIT|JOIN|KEYS|SEED|SIGN|SORT|SQRT|TRIM|ABS|COS|ENV|EXP|LOG|MAX|MIN|MOD|POW|SIN|SUM|TAN|PI)\\b"
         }
       ]
     },
     "functions": {
       "patterns": [
-        { "name": "entity.name.function.plain", "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()" }
+        {
+          "name": "entity.name.function.plain",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()"
+        }
       ]
     },
     "operators": {
       "patterns": [
-        { "name": "keyword.operator.plain", "match": "(?:<=|>=|!=|=|<|>|\\+|-|\\*|/|%|(?i:\\b(?:AND|OR|NOT)\\b))" }
+        {
+          "name": "keyword.operator.plain",
+          "match": "(?:<=|>=|!=|=|<|>|\\+|-|\\*|/|%|(?i:\\b(?:AND|OR|NOT)\\b))"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "match": "(?i)^\\s*(TO)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.plain"
+            },
+            "2": {
+              "name": "entity.name.function.plain"
+            }
+          }
+        },
+        {
+          "match": "(?i)\\b(CLASS|EXTENDS|NEW|IS)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.plain"
+            },
+            "2": {
+              "name": "entity.name.type.class.plain"
+            }
+          }
+        }
+      ]
+    },
+    "selfAndSuper": {
+      "patterns": [
+        {
+          "name": "variable.language.plain",
+          "match": "(?i:\\b(?:SELF|SUPER)\\b)"
+        }
       ]
     }
   }

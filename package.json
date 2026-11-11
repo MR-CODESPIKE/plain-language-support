@@ -1,8 +1,8 @@
 {
   "name": "plain-language-support",
   "displayName": "Plain Language Support",
-  "description": "Case-insensitive Plain syntax highlighting, language configuration, and starter snippets.",
-  "version": "0.1.1",
+  "description": "Plain language support: syntax highlighting, live compiler diagnostics, completion, hover docs, go to definition, outline, formatting, snippets and a Run command.",
+  "version": "0.2.0",
   "publisher": "mr-codespike",
   "license": "MIT",
   "engines": {
@@ -10,7 +10,8 @@
   },
   "categories": [
     "Programming Languages",
-    "Snippets"
+    "Snippets",
+    "Formatters"
   ],
   "keywords": [
     "plain",
@@ -27,7 +28,7 @@
           "plain"
         ],
         "extensions": [
-          ".pl"
+          ".plain"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -44,9 +45,51 @@
         "language": "plain",
         "path": "./snippets/plain.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "plain.runFile",
+        "title": "Plain: Run File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "plain.checkFile",
+        "title": "Plain: Check File"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "plain.runFile",
+          "when": "resourceLangId == plain",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Plain",
+      "properties": {
+        "plain.compilerPath": {
+          "type": "string",
+          "default": "plain",
+          "markdownDescription": "The Plain compiler executable (the `plain` binary built from the plain-ecosystem repository). Use a full path if it is not on your `PATH`."
+        },
+        "plain.checkOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check a Plain file with the compiler when it is opened."
+        },
+        "plain.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check a Plain file with the compiler when it is saved."
+        }
+      }
+    }
   },
   "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "sync": "node tools/sync-grammar.js",
     "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
@@ -58,5 +101,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MR-CODESPIKE/plain-language-support.git"
-  }
+  },
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:plain"
+  ]
 }

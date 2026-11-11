@@ -1,8 +1,154 @@
 {
-  "Plain attribution header": { "prefix": "header", "body": ["# Plain Language created by MR-CODESPIKE", "$0"], "description": "Add the required creator attribution" },
-  "Function": { "prefix": "to", "body": ["TO ${1:name}(${2:arg} AS ${3:int}) GIVES ${4:int}", "    $0", "END TO"], "description": "Define a Plain function" },
-  "If block": { "prefix": "if", "body": ["IF ${1:condition} THEN", "    $0", "ELSE", "    ", "END IF"], "description": "Create an IF/ELSE block" },
-  "Counted repeat": { "prefix": "repeat", "body": ["REPEAT ${1:i} FROM ${2:0} TO ${3:10}", "    $0", "END REPEAT"], "description": "Create a counted loop" },
-  "Try catch": { "prefix": "try", "body": ["TRY", "    $0", "CATCH ${1:error}", "    SAY ${1:error}", "END TRY"], "description": "Create error handling" },
-  "Class": { "prefix": "class", "body": ["CLASS ${1:Name}${2: EXTENDS ${3:Base}}", "    LET ${4:field} AS ${5:string}", "", "    TO ${6:method}()", "        $0", "    END TO", "END CLASS"], "description": "Define a Plain class" }
+  "Plain attribution header": {
+    "prefix": "header",
+    "body": [
+      "# Plain Language created by MR-CODESPIKE",
+      "$0"
+    ],
+    "description": "Add the required creator attribution"
+  },
+  "Function": {
+    "prefix": "to",
+    "body": [
+      "TO ${1:name}(${2:arg} AS ${3:int}) GIVES ${4:int}",
+      "    $0",
+      "END TO"
+    ],
+    "description": "Define a Plain function"
+  },
+  "If block": {
+    "prefix": "if",
+    "body": [
+      "IF ${1:condition} THEN",
+      "    $0",
+      "ELSE",
+      "    ",
+      "END IF"
+    ],
+    "description": "Create an IF/ELSE block"
+  },
+  "Counted repeat": {
+    "prefix": "repeat",
+    "body": [
+      "REPEAT ${1:i} FROM ${2:0} TO ${3:10}",
+      "    $0",
+      "END REPEAT"
+    ],
+    "description": "Create a counted loop"
+  },
+  "Try catch": {
+    "prefix": "try",
+    "body": [
+      "TRY",
+      "    $0",
+      "CATCH ${1:error}",
+      "    SAY ${1:error}",
+      "END TRY"
+    ],
+    "description": "Create error handling"
+  },
+  "Class": {
+    "prefix": "class",
+    "body": [
+      "CLASS ${1:Name}${2: EXTENDS ${3:Base}}",
+      "    LET ${4:field} AS ${5:string}",
+      "",
+      "    TO ${6:method}()",
+      "        $0",
+      "    END TO",
+      "END CLASS"
+    ],
+    "description": "Define a Plain class"
+  },
+  "Else if": {
+    "prefix": "elseif",
+    "body": [
+      "ELSE IF ${1:condition} THEN",
+      "    $0"
+    ],
+    "description": "Add an ELSE IF branch"
+  },
+  "Repeat for each": {
+    "prefix": "foreach",
+    "body": [
+      "REPEAT FOR EACH ${1:item} IN ${2:items}",
+      "    $0",
+      "END REPEAT"
+    ],
+    "description": "Loop over a list"
+  },
+  "Repeat while": {
+    "prefix": "while",
+    "body": [
+      "REPEAT WHILE ${1:condition}",
+      "    $0",
+      "END REPEAT"
+    ],
+    "description": "Loop while a condition holds"
+  },
+  "Ask": {
+    "prefix": "ask",
+    "body": [
+      "ASK \"${1:Question}: \" AS ${2:int} ${3:answer}",
+      "$0"
+    ],
+    "description": "Read a value from standard input"
+  },
+  "Constructor": {
+    "prefix": "ctor",
+    "body": [
+      "TO NEW ${1:value} AS ${2:string}",
+      "    SET ${3:field} = ${1:value}",
+      "END TO"
+    ],
+    "description": "Define a constructor"
+  },
+  "Class with parent": {
+    "prefix": "classx",
+    "body": [
+      "CLASS ${1:Name} EXTENDS ${2:Base}",
+      "    TO NEW ${3:value} AS ${4:string}",
+      "        SUPER.NEW(${3:value})",
+      "    END TO",
+      "",
+      "    TO ${5:method} GIVES ${6:string}",
+      "        GIVE BACK SUPER.${5:method}()",
+      "    END TO",
+      "END CLASS"
+    ],
+    "description": "Define a subclass that calls its parent"
+  },
+  "Extern function": {
+    "prefix": "extern",
+    "body": [
+      "EXTERN \"${1:plain_ml}\" FUNCTION ${2:name}(${3:value} AS ${4:any}) GIVES ${5:any}",
+      "$0"
+    ],
+    "description": "Declare a native function"
+  },
+  "JSON round trip": {
+    "prefix": "json",
+    "body": [
+      "LET ${1:data} = JSON_DECODE(${2:text})",
+      "IF IS_ERROR(${1:data}) THEN",
+      "    SAY ERROR_MESSAGE(${1:data})",
+      "ELSE",
+      "    SAY JSON_ENCODE(${1:data})",
+      "END IF"
+    ],
+    "description": "Parse JSON and handle bad input"
+  },
+  "Neural network": {
+    "prefix": "nn",
+    "body": [
+      "EXTERN \"plain_ml\" FUNCTION plain_nn_create(layers AS any, seed AS int) GIVES any",
+      "EXTERN \"plain_ml\" FUNCTION plain_nn_train(net AS any, inputs AS any, labels AS any, options AS any) GIVES any",
+      "EXTERN \"plain_ml\" FUNCTION plain_nn_predict(net AS any, input AS any) GIVES any",
+      "",
+      "LET net = plain_nn_create([${1:2}, ${2:8}, ${3:2}], ${4:7})",
+      "LET loss = plain_nn_train(net, ${5:inputs}, ${6:labels}, {epochs: ${7:300}, learning_rate: ${8:0.05}})",
+      "SAY plain_nn_predict(net, ${9:[1, 0]})"
+    ],
+    "description": "Train and use a neural network"
+  }
 }

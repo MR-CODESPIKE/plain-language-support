@@ -3,24 +3,61 @@
     "lineComment": "#"
   },
   "brackets": [
-    ["(", ")"],
-    ["[", "]"],
-    ["{", "}"]
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ]
   ],
   "autoClosingPairs": [
-    { "open": "(", "close": ")" },
-    { "open": "[", "close": "]" },
-    { "open": "{", "close": "}" },
-    { "open": "\"", "close": "\"", "notIn": ["string", "comment"] }
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    },
+    {
+      "open": "\"",
+      "close": "\"",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    }
   ],
   "surroundingPairs": [
-    ["(", ")"],
-    ["[", "]"],
-    ["{", "}"],
-    ["\"", "\""]
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "\"",
+      "\""
+    ]
   ],
   "indentationRules": {
-    "increaseIndentPattern": "^\\s*(?i:(?:(?:CLASS|TO|TRY|REPEAT)\\b.*|IF\\b.*\\bTHEN\\b|ELSE(?:\\s+IF\\b.*\\bTHEN\\b)?|CATCH\\b.*))$",
+    "increaseIndentPattern": "^\\s*(?i:(?:(?:CLASS|TO|TRY|REPEAT)\\b.*|IF\\b.*|ELSE(?:\\s+IF\\b.*)?|CATCH\\b.*))$",
     "decreaseIndentPattern": "^\\s*(?i:(?:END\\b.*|ELSE\\b.*|CATCH\\b.*))$"
   },
   "folding": {
@@ -28,5 +65,6 @@
       "start": "^\\s*(?i:(?:CLASS|IF|REPEAT|TRY|TO)\\b)",
       "end": "^\\s*(?i:END)\\b"
     }
-  }
+  },
+  "wordPattern": "[A-Za-z_][A-Za-z0-9_]*|\\d+(?:\\.\\d+)?"
 }

@@ -1,0 +1,538 @@
+[
+  {
+    "name": "LENGTH",
+    "category": "Strings",
+    "signature": "LENGTH(value)",
+    "returns": "int",
+    "description": "Characters in a string, items in a list, or keys in a dictionary.",
+    "example": "SAY LENGTH(\"héllo\")"
+  },
+  {
+    "name": "UPPER",
+    "category": "Strings",
+    "signature": "UPPER(text)",
+    "returns": "string",
+    "description": "Upper-case copy of a string.",
+    "example": "SAY UPPER(\"plain\")"
+  },
+  {
+    "name": "LOWER",
+    "category": "Strings",
+    "signature": "LOWER(text)",
+    "returns": "string",
+    "description": "Lower-case copy of a string.",
+    "example": "SAY LOWER(\"PLAIN\")"
+  },
+  {
+    "name": "TRIM",
+    "category": "Strings",
+    "signature": "TRIM(text)",
+    "returns": "string",
+    "description": "Removes whitespace from both ends of a string.",
+    "example": "SAY TRIM(\"  hi  \")"
+  },
+  {
+    "name": "SPLIT",
+    "category": "Strings",
+    "signature": "SPLIT(text, separator)",
+    "returns": "list",
+    "description": "Splits text at every separator. An empty separator splits into characters.",
+    "example": "LET parts = SPLIT(\"a,b,c\", \",\")"
+  },
+  {
+    "name": "JOIN",
+    "category": "Strings",
+    "signature": "JOIN(list, separator)",
+    "returns": "string",
+    "description": "Joins the items of a list into one string.",
+    "example": "SAY JOIN([\"a\", \"b\"], \"-\")"
+  },
+  {
+    "name": "REPLACE",
+    "category": "Strings",
+    "signature": "REPLACE(text, old, new)",
+    "returns": "string",
+    "description": "Replaces every occurrence of `old` with `new`. An empty `old` leaves the text unchanged.",
+    "example": "SAY REPLACE(\"a-b\", \"-\", \"+\")"
+  },
+  {
+    "name": "SUBSTRING",
+    "category": "Strings",
+    "signature": "SUBSTRING(text, start, length)",
+    "returns": "string",
+    "description": "Up to `length` characters starting at character index `start` (counted in characters, not bytes). Negative arguments are an error.",
+    "example": "SAY SUBSTRING(\"héllo\", 1, 3)"
+  },
+  {
+    "name": "INDEX_OF",
+    "category": "Strings",
+    "signature": "INDEX_OF(text_or_list, item)",
+    "returns": "int",
+    "description": "Character index of the first match in a string, or index of the first equal item in a list. -1 when not found.",
+    "example": "SAY INDEX_OF(\"hello\", \"ll\")"
+  },
+  {
+    "name": "REVERSE",
+    "category": "Strings",
+    "signature": "REVERSE(text_or_list)",
+    "returns": "string or list",
+    "description": "Reversed copy of a string or a list.",
+    "example": "SAY REVERSE(\"abc\")"
+  },
+  {
+    "name": "REPEAT_STRING",
+    "category": "Strings",
+    "signature": "REPEAT_STRING(text, times)",
+    "returns": "string",
+    "description": "The text repeated `times` times (result limited to 100,000,000 bytes).",
+    "example": "SAY REPEAT_STRING(\"ab\", 3)"
+  },
+  {
+    "name": "CONTAINS",
+    "category": "Strings",
+    "signature": "CONTAINS(text, part)",
+    "returns": "bool",
+    "description": "TRUE when `part` occurs inside `text`.",
+    "example": "IF CONTAINS(line, \"ERROR\") THEN"
+  },
+  {
+    "name": "STARTS_WITH",
+    "category": "Strings",
+    "signature": "STARTS_WITH(text, prefix)",
+    "returns": "bool",
+    "description": "TRUE when the text begins with `prefix`.",
+    "example": "SAY STARTS_WITH(\"plain\", \"pl\")"
+  },
+  {
+    "name": "ENDS_WITH",
+    "category": "Strings",
+    "signature": "ENDS_WITH(text, suffix)",
+    "returns": "bool",
+    "description": "TRUE when the text ends with `suffix`.",
+    "example": "SAY ENDS_WITH(\"plain\", \"in\")"
+  },
+  {
+    "name": "TO_STRING",
+    "category": "Conversion and types",
+    "signature": "TO_STRING(value)",
+    "returns": "string",
+    "description": "Text form of any value (the same text SAY would print for a string).",
+    "example": "SAY TO_STRING(42) + \"!\""
+  },
+  {
+    "name": "TO_INT",
+    "category": "Conversion and types",
+    "signature": "TO_INT(value)",
+    "returns": "int",
+    "description": "Converts a string (surrounding spaces allowed), float (truncated), boolean or int to an integer. Invalid input is an error.",
+    "example": "LET n = TO_INT(\"42\")"
+  },
+  {
+    "name": "TO_FLOAT",
+    "category": "Conversion and types",
+    "signature": "TO_FLOAT(value)",
+    "returns": "float",
+    "description": "Converts a string, int or boolean to a float. Invalid input is an error.",
+    "example": "LET x = TO_FLOAT(\"2.5\")"
+  },
+  {
+    "name": "TYPE_OF",
+    "category": "Conversion and types",
+    "signature": "TYPE_OF(value)",
+    "returns": "string",
+    "description": "\"int\", \"float\", \"bool\", \"string\", \"list\", \"dict\", \"error\", \"null\", \"handle\", or the class name for an object.",
+    "example": "SAY TYPE_OF(dog)"
+  },
+  {
+    "name": "IS_ERROR",
+    "category": "Conversion and types",
+    "signature": "IS_ERROR(value)",
+    "returns": "bool",
+    "description": "TRUE when the value is an error value.",
+    "example": "IF IS_ERROR(result) THEN"
+  },
+  {
+    "name": "ERROR_MESSAGE",
+    "category": "Conversion and types",
+    "signature": "ERROR_MESSAGE(value)",
+    "returns": "string",
+    "description": "The message of an error value.",
+    "example": "SAY ERROR_MESSAGE(result)"
+  },
+  {
+    "name": "ABS",
+    "category": "Math",
+    "signature": "ABS(number)",
+    "returns": "number",
+    "description": "Absolute value. Integers stay exact.",
+    "example": "SAY ABS(-5)"
+  },
+  {
+    "name": "SQRT",
+    "category": "Math",
+    "signature": "SQRT(number)",
+    "returns": "float",
+    "description": "Square root. A negative number is an error.",
+    "example": "SAY SQRT(81)"
+  },
+  {
+    "name": "POW",
+    "category": "Math",
+    "signature": "POW(base, exponent)",
+    "returns": "float",
+    "description": "`base` raised to `exponent`.",
+    "example": "SAY POW(2, 8)"
+  },
+  {
+    "name": "FLOOR",
+    "category": "Math",
+    "signature": "FLOOR(number)",
+    "returns": "int",
+    "description": "Largest integer not above the number.",
+    "example": "SAY FLOOR(2.7)"
+  },
+  {
+    "name": "CEIL",
+    "category": "Math",
+    "signature": "CEIL(number)",
+    "returns": "int",
+    "description": "Smallest integer not below the number.",
+    "example": "SAY CEIL(2.1)"
+  },
+  {
+    "name": "ROUND",
+    "category": "Math",
+    "signature": "ROUND(number)",
+    "returns": "int",
+    "description": "Nearest integer; halves round away from zero.",
+    "example": "SAY ROUND(2.5)"
+  },
+  {
+    "name": "SIN",
+    "category": "Math",
+    "signature": "SIN(angle)",
+    "returns": "float",
+    "description": "Sine of an angle in radians.",
+    "example": "SAY SIN(0)"
+  },
+  {
+    "name": "COS",
+    "category": "Math",
+    "signature": "COS(angle)",
+    "returns": "float",
+    "description": "Cosine of an angle in radians.",
+    "example": "SAY COS(0)"
+  },
+  {
+    "name": "TAN",
+    "category": "Math",
+    "signature": "TAN(angle)",
+    "returns": "float",
+    "description": "Tangent of an angle in radians.",
+    "example": "SAY TAN(0)"
+  },
+  {
+    "name": "EXP",
+    "category": "Math",
+    "signature": "EXP(number)",
+    "returns": "float",
+    "description": "e raised to the number.",
+    "example": "SAY EXP(1)"
+  },
+  {
+    "name": "LOG",
+    "category": "Math",
+    "signature": "LOG(number)",
+    "returns": "float",
+    "description": "Natural logarithm. A number that is not positive is an error.",
+    "example": "SAY LOG(10)"
+  },
+  {
+    "name": "PI",
+    "category": "Math",
+    "signature": "PI()",
+    "returns": "float",
+    "description": "The constant pi.",
+    "example": "SAY PI()"
+  },
+  {
+    "name": "SIGN",
+    "category": "Math",
+    "signature": "SIGN(number)",
+    "returns": "int",
+    "description": "-1, 0 or 1 according to the sign.",
+    "example": "SAY SIGN(-9)"
+  },
+  {
+    "name": "MOD",
+    "category": "Math",
+    "signature": "MOD(a, b)",
+    "returns": "number",
+    "description": "Remainder (the same as `a % b`). A zero divisor is an error.",
+    "example": "SAY MOD(17, 5)"
+  },
+  {
+    "name": "MIN",
+    "category": "Math",
+    "signature": "MIN(a, b)",
+    "returns": "number or string",
+    "description": "The smaller of two numbers or two strings (the original value is returned).",
+    "example": "SAY MIN(3, 7)"
+  },
+  {
+    "name": "MAX",
+    "category": "Math",
+    "signature": "MAX(a, b)",
+    "returns": "number or string",
+    "description": "The larger of two numbers or two strings.",
+    "example": "SAY MAX(3, 7)"
+  },
+  {
+    "name": "CLAMP",
+    "category": "Math",
+    "signature": "CLAMP(value, low, high)",
+    "returns": "number",
+    "description": "Limits `value` to the range low..high. `low` must not exceed `high`.",
+    "example": "SAY CLAMP(15, 0, 10)"
+  },
+  {
+    "name": "RANDOM",
+    "category": "Random numbers",
+    "signature": "RANDOM()",
+    "returns": "float",
+    "description": "A random float in [0, 1).",
+    "example": "SAY RANDOM()"
+  },
+  {
+    "name": "RANDOM_INT",
+    "category": "Random numbers",
+    "signature": "RANDOM_INT(low, high)",
+    "returns": "int",
+    "description": "A random integer from low to high, both included.",
+    "example": "SAY RANDOM_INT(1, 6)"
+  },
+  {
+    "name": "SEED",
+    "category": "Random numbers",
+    "signature": "SEED(number)",
+    "returns": "int",
+    "description": "Makes the random sequence reproducible: the same seed always gives the same numbers.",
+    "example": "SEED(42)"
+  },
+  {
+    "name": "APPEND",
+    "category": "Lists and dictionaries",
+    "signature": "APPEND(list, item)",
+    "returns": "bool",
+    "description": "Adds an item to the end of a list (in place). Returns TRUE.",
+    "example": "APPEND(nums, 4)"
+  },
+  {
+    "name": "REMOVE",
+    "category": "Lists and dictionaries",
+    "signature": "REMOVE(list, index)",
+    "returns": "any",
+    "description": "Removes and returns the item at `index`. An index out of range is an error.",
+    "example": "LET last = REMOVE(nums, 2)"
+  },
+  {
+    "name": "RANGE",
+    "category": "Lists and dictionaries",
+    "signature": "RANGE(start, end)",
+    "returns": "list",
+    "description": "The integers from `start` to `end`, both included (at most 10,000,000 items).",
+    "example": "REPEAT FOR EACH i IN RANGE(1, 5)"
+  },
+  {
+    "name": "SORT",
+    "category": "Lists and dictionaries",
+    "signature": "SORT(list)",
+    "returns": "list",
+    "description": "A new list in ascending order. Works for a list of numbers or a list of strings.",
+    "example": "SAY SORT([3, 1, 2])"
+  },
+  {
+    "name": "SLICE",
+    "category": "Lists and dictionaries",
+    "signature": "SLICE(list_or_text, start, end)",
+    "returns": "list or string",
+    "description": "The part from `start` up to (not including) `end`. Indexes past the end are clamped; negative indexes are an error.",
+    "example": "SAY SLICE([1, 2, 3, 4], 1, 3)"
+  },
+  {
+    "name": "CONCAT",
+    "category": "Lists and dictionaries",
+    "signature": "CONCAT(list_a, list_b)",
+    "returns": "list",
+    "description": "A new list with the items of both lists.",
+    "example": "SAY CONCAT([1], [2, 3])"
+  },
+  {
+    "name": "UNIQUE",
+    "category": "Lists and dictionaries",
+    "signature": "UNIQUE(list)",
+    "returns": "list",
+    "description": "The distinct items in first-seen order (quadratic time, meant for modest lists).",
+    "example": "SAY UNIQUE([1, 2, 1])"
+  },
+  {
+    "name": "COPY",
+    "category": "Lists and dictionaries",
+    "signature": "COPY(value)",
+    "returns": "list or dict",
+    "description": "A shallow copy of a list or dictionary.",
+    "example": "LET copy = COPY(nums)"
+  },
+  {
+    "name": "SUM",
+    "category": "Lists and dictionaries",
+    "signature": "SUM(list)",
+    "returns": "number",
+    "description": "Sum of a list of numbers. An empty list gives 0.",
+    "example": "SAY SUM([1, 2, 3])"
+  },
+  {
+    "name": "LIST_MIN",
+    "category": "Lists and dictionaries",
+    "signature": "LIST_MIN(list)",
+    "returns": "any",
+    "description": "Smallest item of a non-empty list of numbers or strings.",
+    "example": "SAY LIST_MIN([4, 2, 9])"
+  },
+  {
+    "name": "LIST_MAX",
+    "category": "Lists and dictionaries",
+    "signature": "LIST_MAX(list)",
+    "returns": "any",
+    "description": "Largest item of a non-empty list of numbers or strings.",
+    "example": "SAY LIST_MAX([4, 2, 9])"
+  },
+  {
+    "name": "KEYS",
+    "category": "Lists and dictionaries",
+    "signature": "KEYS(dict)",
+    "returns": "list",
+    "description": "The keys of a dictionary, sorted.",
+    "example": "SAY KEYS(person)"
+  },
+  {
+    "name": "VALUES",
+    "category": "Lists and dictionaries",
+    "signature": "VALUES(dict)",
+    "returns": "list",
+    "description": "The values of a dictionary in key order.",
+    "example": "SAY VALUES(person)"
+  },
+  {
+    "name": "HAS_KEY",
+    "category": "Lists and dictionaries",
+    "signature": "HAS_KEY(dict, key)",
+    "returns": "bool",
+    "description": "TRUE when the dictionary has the key.",
+    "example": "IF HAS_KEY(person, \"age\") THEN"
+  },
+  {
+    "name": "DELETE_KEY",
+    "category": "Lists and dictionaries",
+    "signature": "DELETE_KEY(dict, key)",
+    "returns": "bool",
+    "description": "Removes a key. Returns TRUE when the key existed.",
+    "example": "DELETE_KEY(person, \"age\")"
+  },
+  {
+    "name": "READ_FILE",
+    "category": "Files, time and the process",
+    "signature": "READ_FILE(path)",
+    "returns": "string",
+    "description": "The whole contents of a text file. Failure is an error.",
+    "example": "LET text = READ_FILE(\"notes.txt\")"
+  },
+  {
+    "name": "WRITE_FILE",
+    "category": "Files, time and the process",
+    "signature": "WRITE_FILE(path, text)",
+    "returns": "bool",
+    "description": "Writes (and overwrites) a text file.",
+    "example": "WRITE_FILE(\"out.txt\", \"hello\")"
+  },
+  {
+    "name": "APPEND_FILE",
+    "category": "Files, time and the process",
+    "signature": "APPEND_FILE(path, text)",
+    "returns": "bool",
+    "description": "Appends text to a file, creating it if needed.",
+    "example": "APPEND_FILE(\"log.txt\", \"line\\n\")"
+  },
+  {
+    "name": "READ_LINES",
+    "category": "Files, time and the process",
+    "signature": "READ_LINES(path)",
+    "returns": "iterator",
+    "description": "Reads a file line by line; use it with REPEAT FOR EACH.",
+    "example": "REPEAT FOR EACH line IN READ_LINES(\"log.txt\")"
+  },
+  {
+    "name": "FILE_EXISTS",
+    "category": "Files, time and the process",
+    "signature": "FILE_EXISTS(path)",
+    "returns": "bool",
+    "description": "TRUE when the path exists.",
+    "example": "IF FILE_EXISTS(\"config.json\") THEN"
+  },
+  {
+    "name": "ENV",
+    "category": "Files, time and the process",
+    "signature": "ENV(name)",
+    "returns": "string",
+    "description": "The value of an environment variable. A missing variable is an error.",
+    "example": "SAY ENV(\"HOME\")"
+  },
+  {
+    "name": "ARGS",
+    "category": "Files, time and the process",
+    "signature": "ARGS()",
+    "returns": "list",
+    "description": "The command-line arguments after the program name.",
+    "example": "LET args = ARGS()"
+  },
+  {
+    "name": "NOW_MS",
+    "category": "Files, time and the process",
+    "signature": "NOW_MS()",
+    "returns": "int",
+    "description": "Milliseconds since the Unix epoch.",
+    "example": "LET started = NOW_MS()"
+  },
+  {
+    "name": "SLEEP",
+    "category": "Files, time and the process",
+    "signature": "SLEEP(milliseconds)",
+    "returns": "int",
+    "description": "Pauses the program (0 to 3,600,000 ms). Output is flushed first.",
+    "example": "SLEEP(250)"
+  },
+  {
+    "name": "EXIT",
+    "category": "Files, time and the process",
+    "signature": "EXIT(code)",
+    "returns": "never returns",
+    "description": "Flushes output and ends the program with an exit status.",
+    "example": "EXIT(0)"
+  },
+  {
+    "name": "JSON_ENCODE",
+    "category": "JSON",
+    "signature": "JSON_ENCODE(value)",
+    "returns": "string",
+    "description": "JSON text for a number, boolean, string, list, dictionary or null. Dictionary keys are sorted and an object loses its hidden class tag. Errors cannot be encoded.",
+    "example": "SAY JSON_ENCODE({name: \"Rex\", tags: [1, 2]})"
+  },
+  {
+    "name": "JSON_DECODE",
+    "category": "JSON",
+    "signature": "JSON_DECODE(text)",
+    "returns": "any",
+    "description": "Parses JSON into lists, dictionaries, numbers, booleans, strings and null. Whole numbers become integers. Invalid JSON is an error that names the position.",
+    "example": "LET data = JSON_DECODE(READ_FILE(\"data.json\"))"
+  }
+]
